@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/static/css/bookmovie.css">
+    <script src="{{ url_for('static', filename='js/bookmovie.js')}}"></script>
+    <title data-rh="true">ShowTime at MovieAnytime Multiplexes</title>
+</head>
+
+<body>
+    <section class="top-bar">
+        <div class="left-content">
+            <h1 class="title">MovieAnytime</h1>
+            <form id="bookMovieForm" onclick="return submitForm()" 
+            action= "{{ url_for('bookmovie', movieid = theaters[0]['movieid'], multiplexs= theaters[0]['multiplexid']) }}"
+            method="POST">
+                <ul class="navigation">
+                    <li>
+                        <input type="hidden" id="movieid" name="movieid"  value="{{theaters[0]['movieid']}}" readonly>  
+                    </li>                  
+                    <li>
+                        <input type="date" id="chosenDate" name="chosenDate" value="{{chosenDate}}">
+                    </li>
+                    <label for="locations"style="color: aliceblue;">Select a location:</label>
+                    <select type="locations" id="locations" name="locations"></select>
+
+                    <label for="multiplexs" style="color: aliceblue;">Select a multiplex:</label>
+                    <select type="multiplexs" id="multiplexs" value="Multiplexs" name="multiplexs">
+                        {% for multiplex in multiplexes %}
+                        <option value="{{multiplex['multiplexid']}}">{{multiplex['multiplexname']}}</option>
+                        {% endfor %}
+                    </select>                           
+                </ul>
+                <button type="submit" class="btn">Apply</button>
+
+            </form>
+        </div>
+        <div class="right-content">
+            <img src="/static/images/filter.png" alt="" class="filter">
+            <img src="/static/images/cart.png" alt="" class="cart">
+            <div class="profile-img-box">
+                <img src="/static/images/profile.png" alt="">
+            </div>
+            <img src="/static/images/menu.png" alt="" class="menu">
+        </div>
+    </section>
+
+    <section class="display-movie-poster">
+        <div class="display-poster">
+    </section>
+
+    <section class="main-container-booking">
+        <div class="movies-container">
+            <div class="movie-header">
+                <h4>{{theaters[0]['moviename']}}</h4>
+            </div>
+        <div class="current-theaters">
+            {% for theater in theaters %}
+            <div class="current-movie">
+                <h3 class="movie-title">{{ theater['multiplexname'] }}</h3>
+                <p class="screen-name">Showing at {{ theater['theaternumber'] }}</p>
+                <div class="booking">
+                    {% for showtime in theater['mshowtimes'].split(', ') %}
+                        {% set index = loop.index0 %}
+                            <a class="btn" href="{{ url_for('seatselection', theaterid=theater['theaterid'], showingdetailid=theater['showingdetailids'].split(', ')[index]) }}">
+                                {{ showtime }}
+                            </a>
+                    {% endfor %}
+                </div>                                                       
+            </div>
+            {% endfor %}
+        </div>
+    </section>
+
+</body>
+
+</html>

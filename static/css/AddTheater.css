@@ -1,0 +1,162 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 20px;
+}
+
+.button-container {
+    display: flex; 
+    gap: 10px; 
+}
+
+header {
+    text-align: center;
+    padding: 10px;
+    background-color: #333;
+    color: #fff;
+}
+.container {
+    margin-top: 20px;
+}
+
+.multiplex-dropdown {
+    width: 200px;
+}
+.theater-box {
+    border: 1px solid #ccc;
+    padding: 10px;
+    margin: 10px;
+    width: 30%;
+}
+.update-btn {
+    display: block;
+    margin-top: 10px;
+    padding: 5px 10px;
+    background-color: #333;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+}
+
+.add-btn, .delete-btn, .save-btn, .add-theater-btn, .close-button{
+    display: block;
+    margin-top: 10px;
+    padding: 5px 10px;
+    background-color: #333;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+}
+
+.save-button {
+    display: block;
+    margin-bottom: 10px;
+    padding: 5px 10px;
+    background-color: #333;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+}
+
+.close-button {
+    display: block;
+    margin-top: 10px; 
+    padding: 5px 10px;
+    background-color: #333;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+}
+
+.editable-container {
+    margin-bottom: 30px;
+    display: flex;
+    align-items: center;
+}
+
+.editable-container div {
+    margin-right: 8px; 
+}
+
+.pen-icon {
+    cursor: pointer;
+    color: black;
+}
+
+.dialog {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.custom-dialog {
+    width: 50%;
+    background-color: white;
+    border: 1px dotted black;
+    padding: 20px;
+}
+
+.custom-dialog label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+.custom-dialog input {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 10px;
+    box-sizing: border-box;
+}
+
+.theater-item {
+    border: 1px solid #ddd;
+    margin: 10px;
+    padding: 10px;
+}
+
+.theater-form div {
+    display: flex;
+    flex-direction: column;
+}
+input[type=text], select {
+    width: 50%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+  }
+
+  .theater-form-container{
+    border-radius: 5px;
+    background-color: #f2f2f2;
+    padding: 10px;
+  }  
+
+  input[type=submit] {
+    width: 50%;
+    background-color: black;
+    color: white;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+
+  .theater-form div {
+    display: flex;
+    flex-direction: column;
+}
+
+/* .theater-form-container {
+    border: 1px solid #ccc;
+    padding: 15px;
+    margin-bottom: 15px;
+    width: 50%; 
+} */
+
+.theater-form label {
+    width: 30%; 
+    margin-right: 10px;
+}

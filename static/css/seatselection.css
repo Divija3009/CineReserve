@@ -1,0 +1,66 @@
+body{
+  background-color: black;
+}
+
+.seat {
+  text-align: center;
+  padding: 10px 5px; 
+  border-radius: 5px;
+  background: white;
+}
+
+.seatColours
+{
+  color: white;
+}
+
+.selected-seats{
+  color: white;
+}
+
+#screen {
+  background-color: brown;
+  color: white;
+  text-align: center;
+  padding: 20px;
+  border-bottom-left-radius: 300% 300px; 
+  border-bottom-right-radius: 300% 300px;
+  /* max-width: 300px; */
+  margin: 0 auto;
+}
+
+.taken { 
+  background: grey; 
+  color: #fff; 
+}
+
+.selected { background: red; }
+ 
+#layout {
+  max-width: 800px;
+  margin: auto; 
+  display: grid;
+  grid-template-columns: repeat(10, 2fr);
+  grid-gap: 10px;
+  margin-bottom: 20px;
+}
+
+#seats {
+  display: grid;
+  grid-gap: 10px;
+  grid-template-columns: 50px auto ;
+}
+
+#seats .txt {
+  display: flex;
+  align-items: center;
+}
+ 
+#save {
+  font-size: 20px;
+  margin-top: 20px;
+  padding: 10px 20px;
+  border: 0;
+  color: #fff;
+  background: #00479f;
+}

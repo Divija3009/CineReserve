@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static',filename='css/analytics2.css')}}">
+    <title>Dynamic List Box</title>
+</head>
+<body><div class="menu-bar">
+    <h4>Analytics Dashboard(Summarized by Movies)</h4>
+   
+</div><br><br>
+    <form method="post" action="/showgraph2">
+        <label for="movieSelect">Select a Movie:</label>
+        <select name="Movie" id="movieSelect">
+            {% for movie in movies %}
+                <option value="{{ movie.moviename }}">{{ movie.moviename }}</option>
+            {% endfor %}
+        </select>
+        <input type="submit" value="Submit">
+    </form>
+    {% if img_base64 %}
+    <table>
+        <!-- <tr>
+        <td><h1>Summarized by Location</h1></td> -->
+            <!-- <td><h1>Summarized by Movies</h1></td> -->
+        <!-- </tr> -->
+        
+        <tr>
+            <td><img src="data:image/png;base64,{{ img_base64 }}"></td>
+            <!-- <td><img src="data:image/png;base64,{{ img_base64 }}" alt="Line Chart"></td> -->
+        </tr>
+        
+    </table>
+    {% else %}
+    <p>No Data Available,Select a Movie and press Submit</p>
+{% endif %}
+
+</body>
+</html>

@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="{{ url_for('static', filename='js/AddTheater.js')}}"></script>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/AddTheater.css')}}">
+    <style>
+        body {
+          font-family: Arial, Helvetica, sans-serif;
+          
+        }
+        h2{
+            color: wheat;
+            font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-size: large;
+            /* 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif; */
+        }
+        
+        /* tabnavigationhover */
+        /* styles.css */
+        .left-content {
+            flex: 1;
+            
+        }
+        .navbar {
+          overflow: hidden;
+          background-color: #333;
+        }
+        
+        .navbar a {
+          float: right;
+          font-size: 16px;
+          color:goldenrod;
+          text-align: center;
+          padding: 12px 14px;
+          text-decoration: none;
+        }
+        
+        .dropdown {
+          float: right;
+          overflow: hidden;
+        }
+        
+        .dropdown .dropbtn {
+          font-size: 16px;  
+          border: none;
+          outline: none;
+          color: goldenrod;
+          padding: 14px 16px;
+          background-color: inherit;
+          font-family: inherit;
+          margin: 0;
+         
+        }
+        
+        .navbar a:hover, .dropdown:hover .dropbtn {
+          background-color: goldenrod;
+          color: white;
+        }
+        
+        .dropdown-content {
+          display: none;
+          position: absolute;
+          background-color: #f9f9f9;
+          min-width: 216px;
+          box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+          z-index: 1;
+        }
+        
+        .dropdown-content a {
+          float: none;
+          color: black;
+          padding: 12px 14px;
+          text-decoration: none;
+          display: block;
+          text-align: left;
+          min-width: 165px;
+        }
+        
+        .dropdown-content a:hover {
+          background-color: #ddd;
+          color: goldenrod;
+          min-width: 165px;
+        }
+        
+        .dropdown:hover .dropdown-content {
+          display: block;
+        }
+        
+        </style>
+    <title>MovieAnytime</title>
+    
+</head>
+
+<body>
+    <header>
+        <div class="left-content">
+            
+        <h2 class="title">MovieAnytime</h2>
+        </div>
+        <div class="navbar">            
+            <a href="">Logout</a>
+            <a href="/opendiscountpage">Configure Discount</a>
+            <div class="dropdown">
+              <button class="dropbtn">View Analytics Dashboard
+                <i class="fa fa-caret-down"></i>
+              </button>
+              <div class="dropdown-content">
+                <a href="/openanalytics1">Summarized by Location</a>
+                <a href="/openanalytics2">Summarized by Movies</a>                
+              </div>              
+            </div> 
+            <a href="/addmovie">Add/Edit Movie</a>
+            <a href="updateTheater"> Add Theater </a>
+          </div>
+    </header>
+    
+    <div class="container">
+        <div>
+            <label for="multiplex">Select Multiplex:</label>
+            <select id="multiplex" name="multiplex" class="multiplex-dropdown"></select>
+            <!-- <label for="theater">Select Theater:</label>
+            <select id="theater" name="theater" class="theater-dropdown"></select> -->
+
+        </div>
+    </div>
+    
+    <div class="dialog">
+        <dialog id="add-theater-dialog" style="width:50%;background-color:white;border:1px dotted black;">  
+            <h2>New Theater</h2>
+        
+        <div class="editable-field" data-field="movies">            
+            <div class="editable-container">
+                <label for="movies">Multiplex Id:</label>
+                <input type="text" class="showtimes-input" id="multiplexid">
+            </div>
+        </div>
+        <div class="editable-field" data-field="seatingCapacity">            
+            <div class="editable-container">
+                <label for="seatingCapacity">Seating Capacity:</label>
+                <input type="text" class="showtimes-input" id="seatingCapacity">
+            </div>
+        </div>
+        <div class="editable-field" data-field="seatingCapacity">            
+          <div class="editable-container">
+              <label for="noOfColumns">Number of columns</label>
+              <input type="text" class="showtimes-input" id="noOfColumns">
+          </div>
+        </div>
+        <div class="editable-field" data-field="seatingCapacity">            
+          <div class="editable-container">
+              <label for="noOfRows">Number of rows</label>
+              <input type="text" class="showtimes-input" id="noOfRows">
+          </div>
+        </div>
+        <div class="editable-container">
+          <label for="movienames">Movies Playing:</label>
+          <select id="movienames" name="movienames"></select>
+        </div>
+        <div class="editable-field" data-field="showtimes">            
+          <div class="editable-container">
+              <label for="showtimes">price:</label>
+              <input type="text" class="showtimes-input" id="price">
+          </div>
+        </div>
+        <div class="editable-field" data-field="showtimes">            
+          <div class="editable-container">
+              <label for="showtimes">Showtimes:</label>
+              <input type="text" class="showtimes-input" id="showtimes">
+          </div>
+        </div>
+        <div class="button-container">
+          <button class="add-btn" id="add-btn" onclick="addTheater()">Add</button>
+          <button class="close-btn" id="close-btn" onclick="closeAddTheater()">Close</button>
+        </div>
+        </dialog>
+    </div>
+    <div class="dialog">
+        <dialog id="edit-theater-dialog">
+          <h2 id="theaternumber"></h2>
+          <div class="editable-field" data-field="showtimes">
+              <div class="editable-container">                                               
+                  <div contenteditable="false" id="theaterid">
+                      <label for="theaterid">Theater Id :</label>
+                  </div>                        
+              </div>
+          </div>
+          <div class="editable-field" data-field="showingid">
+              <div class="editable-container">                        
+                  <div contenteditable="false" id="showingid">
+                      <label for="showingid">Showing Id :</label>
+                  </div>
+              </div>
+          </div>
+          <div class="editable-field" data-field="noofseats">                    
+              <div class="editable-container">                        
+                  <div name="noofseats" id="noofseats">
+                      <label for="noofseats">Seating Capacity :</label>
+                  </div>
+              </div>
+          </div>
+          <div class="editable-field" data-field="noofrows">                    
+              <div class="editable-container">                        
+                  <div name="noofrows" id="noofrows">
+                      <label for="noofrows">number of rows :</label>
+                  </div>
+              </div>
+          </div>
+          <div class="editable-field" data-field="seatingCapacity">                    
+              <div class="editable-container">                        
+                  <div name="noofcolumns" id="noofcolumns">
+                      <label for="noofcolumns">no of columns :</label>
+                  </div>
+              </div>
+          </div>
+          <div class="editable-field" data-field="mmovieid">                    
+              <div class="editable-container">                        
+                  <div name="mmovieid" id="mmovieid">
+                      <label for="mmovieid">movieid :</label>
+                  </div>
+              </div>
+          </div>
+          <div class="editable-field" data-field="mmovienames">                    
+              <div class="editable-container">                        
+                  <div name="mmovienames" id="mmovienames">
+                      <label for="mmovienames">movienames :</label>
+                  </div>
+              </div>
+          </div>
+          <div class="editable-field" data-field="prices">                    
+              <div class="editable-container">                        
+                  <div name="seatingCapacity" id="prices">
+                      <label for="prices">Prices:</label>
+                  </div>
+              </div>
+          </div>
+          <div class="editable-field" data-field="mshowtimes">                    
+              <div class="editable-container">                        
+                  <div name="mshowtimes" id="mshowtimes">
+                      <label for="mshowtimes">Showtimes :</label>
+                  </div>
+              </div>
+          </div>
+        </dialog>
+    </div>
+    <div class="container" id="theaterContainer"></div>
+</body>
+</html>
