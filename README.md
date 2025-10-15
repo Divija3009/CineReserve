@@ -17,7 +17,7 @@ PostgreSQL Integration – Persistent data management via configuration file
 # Installation & Setup
 ## Clone Repository
 ```
-git clone https://github.com/DivijaChoudhary/CineReserve.git
+git clone https://github.com/Divija3009/CineReserve.git
 ```
 ## Install Dependencies
 ```
